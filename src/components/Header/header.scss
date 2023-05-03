@@ -1,0 +1,27 @@
+header {
+  padding: 30px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1600px;
+  nav {
+    ul {
+      display: flex;
+      gap: 15px;
+      li {
+        list-style: none;
+      text-transform: uppercase;
+      }
+    }
+  }
+  div {
+    display: flex;
+    gap: 15px;
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+}
