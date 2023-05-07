@@ -1,0 +1,56 @@
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 15px;
+  width: 100%;
+  .products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-link {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 22px 0;
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        color: #030D15;
+        &:hover {
+          color: #C72535;
+        }
+      }
+    }
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px -15px;
+    justify-content: center;
+    align-items: center;
+    .col-4 {
+      width: 30%;
+      padding: 0 15px;
+      .box {
+        background-color: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        img {
+          width: 100%;
+          padding: 20px;
+        }
+        div {
+          display: flex;
+          button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
