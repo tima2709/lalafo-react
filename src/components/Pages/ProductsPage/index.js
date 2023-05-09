@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Product.scss';
 import LikeIcon from "../../Icons/likeIcon";
 import BasketIcon from "../../Icons/basket";
@@ -8,17 +8,26 @@ import {Box, Button, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart, increaseAmount} from "../../../redux/action/productAction";
+import ModalLoop from "../../ModalLoop";
 
 const ProductPage = ({tech}) => {
+    const [showImg, setShowImg] = useState(false)
+    const [loopImg, setLoopImg] = useState({})
     const carts = useSelector(state => state.carts)
     const dispatch = useDispatch()
-    const handleAddToCart = () => {
+    const handleAddToCart = (product) => {
         if (carts?.find(cart => cart.id === tech.id)){
             return dispatch(increaseAmount(tech.id))
         } else {
-            const newValue = {...carts, amountInCart: 1}
+            const newValue = {...product, amountInCart: 1}
             dispatch(addToCart(newValue))
         }
+    }
+    console.log(tech, 'tech')
+
+    const handleShowImg = (id) => {
+        setLoopImg(tech.find(el => el.id === id))
+        setShowImg(true)
     }
     return (
         <Box className={'container'}>
@@ -42,8 +51,8 @@ const ProductPage = ({tech}) => {
                                 <img src={el.image} alt=""/>
                                 <Typography variant={'h5'}>{el.title}</Typography>
                                 <Box>
-                                    <Button onClick={handleAddToCart}><BasketIcon/></Button>
-                                    <Button><MagnifyingGlass/></Button>
+                                    <Button onClick={() => handleAddToCart(el)}><BasketIcon/></Button>
+                                    <Button onClick={() => handleShowImg(el.id)}><MagnifyingGlass/></Button>
                                     <Button><LikeIcon/></Button>
                                     <Button><SwipeIcon/></Button>
                                 </Box>
@@ -51,6 +60,7 @@ const ProductPage = ({tech}) => {
                         </Box>
                     )
                 }
+                {showImg && <ModalLoop setShowImg={setShowImg} tech={tech}  loopImg={loopImg}/>}
             </Box>
         </Box>
     );

@@ -10,9 +10,17 @@ export const getProducts = () => {
     }
 }
 
-export const addToCart = (tech) => {
-    return { type: 'ADD_TO_CART', payload: tech}
+export const addToCart = (product) => {
+    return { type: 'ADD_TO_CART', payload: product}
 }
 export const increaseAmount = (id) => {
     return {type: 'INCREASE_AMOUNT', payload: id}
+}
+
+export const decreaseAmount = (id) => {
+    return {type: 'DECREASE_AMOUNT', payload: id}
+}
+
+export const deleteAmount = (product) => {
+    return {type: 'DELETE_AMOUNT', payload: product}
 }
